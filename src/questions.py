@@ -24,6 +24,8 @@ from registry_options import (
     q23_options,
     q25_options,
     q26_options,
+    q27_options,
+    q28_options,
 )
 from utils import free_text_answer_schema, options_to_enum_schema
 
@@ -40,6 +42,8 @@ _q18_schema = options_to_enum_schema(q18_options)
 _q23_schema = free_text_answer_schema()
 _q25_schema = free_text_answer_schema()
 _q26_schema = free_text_answer_schema()
+_q27_schema = options_to_enum_schema(q27_options)
+_q28_schema = free_text_answer_schema()
 
 # ---------------------------------------------------------------------------
 # Question specs — one entry per registry question
@@ -226,6 +230,39 @@ QUESTION_REGISTRY: dict[str, QuestionSpec] = {
             "options": {"temperature": 0},
         },
     ),
+
+
+      "q27": QuestionSpec(
+        question_name="Q27 - Programmable",
+        gold_standard_col="Programmable",
+        prompt_file="q27_prompt.txt",
+        options=q27_options,
+        prediction_key="Q27_Programmable",
+        note_sources=("Op Note", "Discharge Summary"),
+        llm_kwargs={
+            "format": _q27_schema,
+            "response_format": {
+                "type": "json_object",
+            },
+            "options": {"temperature": 0},
+        },
+    ),
+    "q28": QuestionSpec(
+        question_name="Q28 - Initial setting",
+        gold_standard_col="Initial setting",
+        prompt_file="q28_prompt.txt",
+        options=q28_options,
+        prediction_key="Q28_Initial_Setting",
+        note_sources=("Op Note", "Discharge Summary"),
+        llm_kwargs={
+            "format": _q28_schema,
+            "response_format": {
+                "type": "json_object",
+            },
+            "options": {"temperature": 0},
+        },
+    ),
+  
     # -----------------------------------------------------------------------
     # Add further questions here, e.g.:
     # "q4": QuestionSpec(
