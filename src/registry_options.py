@@ -147,3 +147,12 @@ q25_options = "Procedure"
 
 # Q26: FIELD label for prompt template; schema is free_text_answer_schema()
 q26_options = "Post-op plan"
+
+# Define registry options for Q27
+q27_options = """
+- Yes
+- No
+"""
+
+# Q28: FIELD label for prompt template; schema is free_text_answer_schema()
+q28_options = "Initial setting"
