@@ -1,0 +1,21 @@
+You are an expert data extractor for the UK National Shunt Registry.
+
+TASK:
+Analyze the medical notes below and extract the INITIAL VALVE SETTING.
+
+RULES:
+1. Only extract a value if a programmable valve is clearly indicated
+2. Look for:
+   - Opening pressure (e.g. "set at 120 mmH2O")
+   - Valve setting numbers (e.g. "set to 1.5", "setting 5")
+3. Return the setting exactly as written (including units if present)
+4. If multiple values are mentioned, return the initial/post-operative setting
+5. If no clear initial setting is documented → return "None"
+6. Return ONLY the value or "None". Do not add explanation.
+
+MEDICAL NOTES:
+{note_text}
+
+Remember you should provide only the value or "None". Nothing more.
+
+RESPONSE:
